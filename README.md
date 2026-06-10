@@ -47,13 +47,6 @@ unzip models.zip
 uv run python loading_objects.py
 ```
 
-Follow the prompts to pick a category and object id. Press **ESC** in the viewer
-window to exit. Inside the viewer, press **3** to toggle the collision hulls on.
-
-## License
-
-Released under the [MIT License](LICENSE). Note that the bundled object assets
-are subject to the licenses of their respective upstream sources listed above.
 
 ## BibTeX Citation
 
