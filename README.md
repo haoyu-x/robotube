@@ -41,6 +41,13 @@ cd robotube_playground
 uv sync
 ```
 
+## Download assets
+
+```bash
+cd ~/robotube
+
+```
+
 ## Usage
 
 ```bash
