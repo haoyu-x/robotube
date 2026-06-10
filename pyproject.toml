@@ -1,0 +1,13 @@
+[project]
+name = "robotube-playground"
+version = "0.1.0"
+description = "A small MuJoCo playground for loading and viewing articulated and rigid objects (cabinets, drawers, cups, pots)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "mujoco>=3.2",
+]
+
+[tool.uv]
+package = false
