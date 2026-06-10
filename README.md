@@ -18,7 +18,7 @@ Qiang Zhang,
 
 *6th Annual Conference on Robot Learning (CoRL 2022), Oral*
 
-<img width="50%" src="Robotube.png">
+<img width="40%" src="Robotube.png">
 
 </div>
 
