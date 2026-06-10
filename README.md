@@ -1,23 +1,26 @@
 <div align="center">
 
-# RoboTube
+<h1>RoboTube: Learning Household Manipulation from Human Videos with Simulated Twin Environments</h1>
 
-<a href="https://haoyu-x.github.io/"><strong>Haoyu Xiong</strong></a> 
+[[Project page]](https://www.robotube.org/)
+[[Paper]](https://proceedings.mlr.press/v205/xiong23a/xiong23a.pdf)
+
+[Haoyu Xiong](https://haoyu-x.github.io/),
+[Haoyuan Fu](https://simon-fuhaoyuan.github.io/),
+Jieyi Zhang,
+[Chen Bao](https://www.chenbao.tech/),
+Qiang Zhang,
+[Yongxi Huang](https://www.ropl.ai/author/yongxi-huang/),
+[Wenqiang Xu](https://wenqiangx.github.io/),
+[Animesh Garg](https://animesh.garg.tech/),
+[Huazhe Xu](http://hxu.rocks/),
+[Cewu Lu](https://www.mvig.org/)
+
+*6th Annual Conference on Robot Learning (CoRL 2022), Oral*
+
+<img width="80%" src="Robotube.png">
 
 </div>
-
-A small [MuJoCo](https://mujoco.org/) playground for loading and inspecting a
-library of household objects in an interactive viewer. Pick a category and an
-object id from a menu, and the script wraps the object in a minimal scene
-(floor + lights + skybox) and opens the passive viewer.
-
-On load:
-
-- **Articulated objects** (cabinets, drawers) sweep their joint open and closed
-  so you can see the range of motion.
-- **Rigid objects** (cups, pots) fall under gravity and settle on the floor.
-
-## Object library
 
 ## Installation
 
@@ -38,7 +41,7 @@ gdown "https://drive.google.com/uc?id=1fEC1ABeLkZM5XEC6zlXvmqr9VoVnRu0M"
 unzip models.zip 
 ```
 
-## Usage
+## Load digital twins in MuJoCo
 
 ```bash
 uv run python loading_objects.py
@@ -47,16 +50,22 @@ uv run python loading_objects.py
 Follow the prompts to pick a category and object id. Press **ESC** in the viewer
 window to exit. Inside the viewer, press **3** to toggle the collision hulls on.
 
-## Acknowledgment
-
-The assets are borrowed from
-[TidyBot++](https://tidybot2.github.io/),
-[BiGym](https://chernyadev.github.io/bigym/),
-[Robocasa](https://robocasa.ai/), and
-[Gated Memory Policy](https://gated-memory-policy.github.io/).
-Please consider citing these works if you find this helpful.
-
 ## License
 
 Released under the [MIT License](LICENSE). Note that the bundled object assets
 are subject to the licenses of their respective upstream sources listed above.
+
+## BibTeX Citation
+
+```bibtex
+@inproceedings{xiong2022robotube,
+  title={RoboTube: Learning Household Manipulation from Human Videos
+         with Simulated Twin Environments},
+  author={Haoyu Xiong and Haoyuan Fu and Jieyi Zhang and Chen Bao
+          and Qiang Zhang and Yongxi Huang and Wenqiang Xu
+          and Animesh Garg and Cewu Lu},
+  booktitle={6th Annual Conference on Robot Learning},
+  year={2022},
+  url={https://openreview.net/forum?id=VD0nXUG5Qk}
+}
+```
