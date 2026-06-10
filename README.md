@@ -16,9 +16,9 @@ Qiang Zhang,
 [Huazhe Xu](http://hxu.rocks/),
 [Cewu Lu](https://www.mvig.org/)
 
-*6th Annual Conference on Robot Learning (CoRL 2022), Oral*
+*CoRL 2022 Oral*
 
-<img width="40%" src="Robotube.png">
+<img width="50%" src="Robotube.png">
 
 </div>
 
