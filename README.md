@@ -16,9 +16,9 @@ Qiang Zhang,
 [Huazhe Xu](http://hxu.rocks/),
 [Cewu Lu](https://www.mvig.org/)
 
-*CoRL 2022 Oral*
+*6th Annual Conference on Robot Learning (CoRL 2022), Oral*
 
-<img width="50%" src="Robotube.png">
+<img width="80%" src="Robotube.png">
 
 </div>
 
@@ -33,7 +33,41 @@ cd ~/robotube
 uv sync
 ```
 
-## Download assets
+
+## Download example video dataset
+
+A small example slice of the RoboTube video dataset (cabinet opening task) with
+RGB and colorized-depth videos for quick inspection.
+
+```bash
+cd ~/robotube
+gdown "https://drive.google.com/uc?id=15mt9GLF299vkxfU83uqf1UIQCetSYE6x"
+unzip cabinet_opening_example_dataset.zip
+```
+
+Each `*_cam_*` folder holds two videos: `rgb.mp4` (color) and
+`depth.mp4` (depth colorized with the Turbo colormap). `pos`/`neg` are successful/failed episodes, captured from two synchronized first-person and third-person cameras (`cam_0`, `cam_1`).
+
+```
+cabinet_opening_example_dataset/
+├── test/                          # env1
+│   ├── cluttered/env1/{pos,neg}/
+│   └── structured/env1/{pos,neg}/
+└── train/                         # env3
+    ├── cluttered/env3/{pos,neg}/
+    └── structured/env3/{pos,neg}/
+
+# each {pos,neg}/ holds one episode (two synced cameras):
+{pos,neg}/
+├── <timestamp>_cam_0/   (rgb.mp4, depth.mp4)
+└── <timestamp>_cam_1/   (rgb.mp4, depth.mp4)
+```
+
+
+
+## Load digital twins in MuJoCo
+
+Download assets
 
 ```bash
 cd ~/robotube
@@ -41,12 +75,17 @@ gdown "https://drive.google.com/uc?id=1fEC1ABeLkZM5XEC6zlXvmqr9VoVnRu0M"
 unzip models.zip 
 ```
 
-## Load digital twins in MuJoCo
-
 ```bash
 uv run python loading_objects.py
 ```
 
+Follow the prompts to pick a category and object id. Press **ESC** in the viewer
+window to exit. Inside the viewer, press **3** to toggle the collision hulls on.
+
+## License
+
+Released under the [MIT License](LICENSE). Note that the bundled object assets
+are subject to the licenses of their respective upstream sources listed above.
 
 ## BibTeX Citation
 
