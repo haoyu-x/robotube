@@ -36,8 +36,7 @@ uv sync
 
 ## Download example video dataset
 
-A small example slice of the RoboTube video dataset (cabinet opening task) with
-RGB and colorized-depth videos for quick inspection.
+A small example slice of the RoboTube video dataset (cabinet opening task) for quick inspection.
 
 ```bash
 cd ~/robotube
