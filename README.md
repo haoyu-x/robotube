@@ -19,17 +19,6 @@ On load:
 
 ## Object library
 
-Each object lives at `models/{category}/{category}{id}/{category}{id}.xml`
-together with its own `assets/` (meshes + textures).
-
-| Category | Count | Type |
-| --- | --- | --- |
-| `cabinet` | 4  | articulated (hinge door) |
-| `drawer`  | 10 | articulated (sliding drawer) |
-| `cup`     | 20 | rigid |
-| `pot`     | 16 | rigid |
-| `handle`  | 13 | rigid (present on disk, excluded from the menu) |
-
 ## Installation
 
 Requires [uv](https://docs.astral.sh/uv/).
@@ -37,7 +26,7 @@ Requires [uv](https://docs.astral.sh/uv/).
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-cd robotube_playground
+cd ~/robotube
 uv sync
 ```
 
@@ -45,7 +34,8 @@ uv sync
 
 ```bash
 cd ~/robotube
-
+gdown "https://drive.google.com/uc?id=1fEC1ABeLkZM5XEC6zlXvmqr9VoVnRu0M"
+unzip models.zip 
 ```
 
 ## Usage
