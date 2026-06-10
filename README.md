@@ -50,13 +50,25 @@ Each `*_cam_*` folder holds two videos: `rgb.mp4` (color) and
 
 ```
 cabinet_opening_example_dataset/
-├── test/                          # env1
-│   ├── cluttered/env1/{pos,neg}/
-│   └── structured/env1/{pos,neg}/
-└── train/                         # env3
-    ├── cluttered/env3/{pos,neg}/
-    └── structured/env3/{pos,neg}/
-
+├── test/
+│   ├── cluttered/
+│   │   └── env1/
+│   │       ├── pos/
+│   │       └── neg/
+│   └── structured/
+│       └── env1/
+│           ├── pos/
+│           └── neg/
+└── train/
+    ├── cluttered/
+    │   └── env3/
+    │       ├── pos/
+    │       └── neg/
+    └── structured/
+        └── env3/
+            ├── pos/
+            └── neg/
+            
 # each {pos,neg}/ holds one episode (two synced cameras):
 {pos,neg}/
 ├── <timestamp>_cam_0/   (rgb.mp4, depth.mp4)
