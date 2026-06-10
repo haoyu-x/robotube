@@ -41,8 +41,15 @@ RGB and colorized-depth videos for quick inspection.
 
 ```bash
 cd ~/robotube
-gdown "https://drive.google.com/uc?id=15mt9GLF299vkxfU83uqf1UIQCetSYE6x"
+uv run gdown "https://drive.google.com/uc?id=15mt9GLF299vkxfU83uqf1UIQCetSYE6x"
 unzip cabinet_opening_example_dataset.zip
+```
+
+
+Visualize the example video dataset:
+```bash
+cd ~/robotube
+uv run python visualize_videos.py cabinet_opening_example_dataset
 ```
 
 Each `*_cam_*` folder holds two videos: `rgb.mp4` (color) and
@@ -63,11 +70,6 @@ cabinet_opening_example_dataset/
 └── <timestamp>_cam_1/   (rgb.mp4, depth.mp4)
 ```
 
-Visualize the example video dataset:
-```bash
-cd ~/robotube
-uv run python visualize_videos.py 
-```
 
 
 ## Load digital twins in MuJoCo
@@ -76,7 +78,7 @@ Download assets
 
 ```bash
 cd ~/robotube
-gdown "https://drive.google.com/uc?id=1fEC1ABeLkZM5XEC6zlXvmqr9VoVnRu0M"
+uv run gdown "https://drive.google.com/uc?id=1fEC1ABeLkZM5XEC6zlXvmqr9VoVnRu0M"
 unzip models.zip 
 ```
 
