@@ -148,21 +148,8 @@ def main() -> None:
         raise SystemExit(f"no object categories found under {MODELS_ROOT}")
 
     categories = list(catalog.keys())
-    options = categories + ["<demo lineup>"]
     print("\nAvailable categories:")
-    choice = pick("pick a category", options)
-
-    if choice == len(categories):
-        # Load the same multi-object lineup used to render demo.mp4.
-        from make_demo_video import SAMPLES, build_model
-        print(f"\nloading demo lineup ({len(SAMPLES)} objects) ...")
-        t0 = time.time()
-        model = build_model()
-        data = mujoco.MjData(model)
-        print(f"compiled in {time.time() - t0:.2f}s "
-              f"(nbody={model.nbody}, nmesh={model.nmesh}, ngeom={model.ngeom})")
-        run_viewer(model, data)
-        return
+    choice = pick("pick a category", categories)
 
     cat = categories[choice]
     ids = catalog[cat]
