@@ -78,7 +78,15 @@ uv run python read_depth_video.py \
 
 Reading `depth.mp4` back yields a **relative** depth in `[0, 1]` per frame (0 = nearest, 1 = farthest).
 
+## Download full dataset
+```bash
+uv pip install -U huggingface_hub datasets
+```
 
+```bash
+cd ~/robotube
+uv run python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='haoyux/RoboTube_human_videos', repo_type='dataset', local_dir='./RoboTube_human_videos')"
+```
 
 ## Load digital twins in MuJoCo
 
