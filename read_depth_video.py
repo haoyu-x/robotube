@@ -16,6 +16,7 @@ Usage:
 """
 
 import argparse
+import base64
 import json
 import os
 import shutil
@@ -23,8 +24,46 @@ import subprocess
 
 import numpy as np
 
-# Reuse the exact Turbo LUT + ffmpeg resolver from the converter.
-from convert_to_video_dataset import TURBO, ffmpeg_bin
+# 256x3 uint8 Turbo colormap LUT (matplotlib's `turbo`), embedded so this
+# script needs no matplotlib at runtime. Must match the converter's LUT exactly
+# so the inversion in `depth_video_to_norm` lands on the right indices.
+_TURBO_B64 = (
+    "MBI7MhVDMxhKNBtRNR5YNiFfNyRmOCdtOSpzOi15Oy+APDKGPTWLPjiRPzuXPz6cQECiQUOn"
+    "QUasQkmxQku1Q066RFG/RFTDRFbHRVnLRVzPRV7TRmHWRmTaRmbdRmngRmvjR27mR3HpR3Pr"
+    "R3buR3jwR3vyRn30RoD2RoL4RoX6Rof7RYr8RYz9RI/+Q5H+QpT/QZb/QJn/Ppv+PZ7+O6D9"
+    "OqP8OKX7N6j6Nav4M633Ma/1L7L0LrTyLLfwKrnuKLzrJ77pJcDnI8PkIsXiIMffH8ndHsva"
+    "HM3YG9DVGtLSGtTQGdXNGNfKGNnIGNvFGN3CGN7AGOC9GeK7GeO5GuS2HOa0HeeyH+mvIOqs"
+    "IuuqJeynJ+6kKu+hLPCeL/GbMvKYNfOUOPSRPPWOP/aKQ/eHRviESviATvl9Uvp6Vfp2Wftz"
+    "XfxvYfxsZf1paf1mbf5icf5fdf5cef5Zff9WgP9ThP9RiP9Oi/9Lj/9Jkv9Hlv5Emf5CnP5A"
+    "n/0/of09pPw8p/w6qfs5rPs4r/o3sfk2tPg2t/c1ufY1vPU0vvQ0wfM0w/E0xvA0yO80y+00"
+    "zew00Oo00uk11Oc11+U12eQ22+I23eA339834d0349s45dk459c56dU569M57NE67s867806"
+    "8cs68sk69Mc69cU69sM698E6+L45+bw5+ro5+7g4+7Y3/LM2/LE2/a41/aw0/qkz/qcy/qQx"
+    "/qEw/p4v/pst/pks/pYr/pMq/pAp/Y0n/Yom/Icl/IQj+4Ei+34h+nsf+Xge+XUd+HIc928a"
+    "9mwZ9WkY9GYX82MV8mAU8V0T8FsS71gR7VUQ7FMP61AO6k4N6EsM50kM5UcL5EUK4kMK4UEJ"
+    "3z8I3T0I3DsH2jkH2DcG1jUG1DMF0jEF0C8Fzi0EzCsEyioEyCgDxSYDwyUDwSMCviECvCAC"
+    "uR4Ctx0CtBsBshoBrxgBrBcBqRYBpxQBpBMBoRIBnhABmw8BmA4BlQ0BkgsBjgoBiwkCiAgC"
+    "hQcCgQYCfgUCegQD"
+)
+TURBO = np.frombuffer(base64.b64decode(_TURBO_B64), np.uint8).reshape(256, 3)
+
+_ffmpeg = None
+
+
+def ffmpeg_bin():
+    """Resolve the ffmpeg executable, falling back to the pip static binary.
+
+    Cached per process so we only pay the lookup once.
+    """
+    global _ffmpeg
+    if _ffmpeg is None:
+        if shutil.which("ffmpeg") is None:
+            try:
+                import static_ffmpeg
+                static_ffmpeg.add_paths()
+            except ImportError:
+                pass
+        _ffmpeg = shutil.which("ffmpeg") or "ffmpeg"
+    return _ffmpeg
 
 
 def _ffprobe():
