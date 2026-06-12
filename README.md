@@ -40,8 +40,8 @@ A small example slice of the RoboTube video dataset (cabinet opening task) for q
 
 ```bash
 cd ~/robotube
-uv run gdown "https://drive.google.com/uc?id=15mt9GLF299vkxfU83uqf1UIQCetSYE6x"
-unzip cabinet_opening_example_dataset.zip
+uv run gdown 19P6TqUV5OZYa9mqxo_PuqHxYvNZOzFMD
+unzip robotube_example_data.zip
 ```
 
 
