@@ -44,6 +44,13 @@ NEG = "#ff6b6b"       # red (failure)
 
 
 def find_ffmpeg():
+    # Make the pip-provided static ffmpeg/ffprobe binaries available on PATH.
+    # Downloads them on first run; a system ffmpeg, if present, takes priority.
+    try:
+        import static_ffmpeg
+        static_ffmpeg.add_paths()
+    except ImportError:
+        pass
     for exe in ("ffmpeg", "ffprobe"):
         if subprocess.run(["which", exe], capture_output=True).returncode != 0:
             sys.exit(f"error: `{exe}` not found on PATH (install ffmpeg).")
