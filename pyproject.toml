@@ -10,6 +10,8 @@ dependencies = [
     "gdown",
     "numpy",
     "pillow",
+    "static-ffmpeg",
+    "tqdm",
 ]
 
 [tool.uv]
