@@ -48,14 +48,14 @@ unzip robotube_example_data.zip
 Visualize the example video dataset:
 ```bash
 cd ~/robotube
-uv run python visualize_videos.py cabinet_opening_example_dataset
+uv run python visualize_videos.py robotube_example_data
 ```
 
 Each `*_cam_*` folder holds two videos: `rgb.mp4` (color) and
 `depth.mp4` (depth colorized with the Turbo colormap). `pos`/`neg` are successful/failed episodes, captured from two synchronized first-person and third-person cameras (`cam_0`, `cam_1`).
 
 ```
-cabinet_opening_example_dataset/
+robotube_example_data/
 ├── test/                          # env1
 │   ├── cluttered/env1/{pos,neg}/
 │   └── structured/env1/{pos,neg}/
@@ -73,7 +73,7 @@ Read a camera clip with numpy (decodes `rgb.mp4` + `depth.mp4`, recovers depth):
 ```bash
 cd ~/robotube
 uv run python read_depth_video.py \
-  cabinet_opening_example_dataset/test/cluttered/env1/neg/20220611_172421_cam_0
+  robotube_example_data/train/structured/env1/neg/1646361287_cam_1/
 ```
 
 Reading `depth.mp4` back yields a **relative** depth in `[0, 1]` per frame (0 = nearest, 1 = farthest).
