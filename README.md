@@ -40,8 +40,8 @@ A small example slice of the RoboTube video dataset (cabinet opening task) for q
 
 ```bash
 cd ~/robotube
-uv run gdown "https://drive.google.com/file/d/19P6TqUV5OZYa9mqxo_PuqHxYvNZOzFMD/view?usp=sharing"
-unzip robotube_example_data.zip
+uv run gdown "https://drive.google.com/uc?id=15mt9GLF299vkxfU83uqf1UIQCetSYE6x"
+unzip cabinet_opening_example_dataset.zip
 ```
 
 
@@ -68,6 +68,15 @@ cabinet_opening_example_dataset/
 ├── <timestamp>_cam_0/   (rgb.mp4, depth.mp4)
 └── <timestamp>_cam_1/   (rgb.mp4, depth.mp4)
 ```
+
+Read a camera clip with numpy (decodes `rgb.mp4` + `depth.mp4`, recovers depth):
+```bash
+cd ~/robotube
+uv run python read_depth_video.py \
+  cabinet_opening_example_dataset/test/cluttered/env1/neg/20220611_172421_cam_0
+```
+
+Reading `depth.mp4` back yields a **relative** depth in `[0, 1]` per frame (0 = nearest, 1 = farthest).
 
 
 
