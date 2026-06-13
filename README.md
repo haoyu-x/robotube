@@ -85,7 +85,9 @@ uv pip install -U huggingface_hub datasets
 
 ```bash
 cd ~/robotube
-uv run python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='haoyux/RoboTube_human_videos', repo_type='dataset', local_dir='./RoboTube_human_videos')"
+uv run hf download haoyux/RoboTube_human_videos \
+  --repo-type dataset \
+  --local-dir RoboTube_human_videos
 ```
 
 ## Load digital twins in MuJoCo
